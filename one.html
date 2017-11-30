@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>1</title>
+	<style type="text/css">
+	label {
+		font-size: 2rem;
+		color: black;
+	}
+	#control {
+		width: 5rem;
+		height: 2rem;
+		background: red;
+		text-align: center;
+		color: white;
+	}
+	.block {
+		width: 150px;
+		height: 150px;
+		background: #eee;
+		border: 2px solid black;
+		transition: 1s all;
+	}
+	.mask {
+		width: 100%;
+		height: 100%;
+		background: black;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0.5;
+		z-index: 999;
+	}
+	.menu {
+		width: 500px;
+		height: 300px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		background: white;
+		border: 15px solid #feeeed;
+		z-index: 1000;
+		padding: 30px;
+	}
+	.menu label {
+	    font-size: 1.3rem;
+	    margin: 0 auto;
+	    display: block;
+	    width: 70%;
+	}
+	.menu  button {
+		width: 50px;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		margin: 0 10px;
+		border: 1px solid white;
+	}
+	.btn1 {
+		background: #b2d235;
+		color: white;
+	}
+	.btn2 {
+		background: #faa755;
+		color: white;
+	}
+	.btn3 {
+		background: #585eaa;
+		color: white;
+	}
+	.btn4,.btn5 {
+		display: block;
+		margin: 0 auto ;
+		background: #4e72b8;
+		color: white;
+	}
+	.dan {
+		display: flex;
+		justify-content: center;
+		margin-top: 30px;
+	}
+	button:hover {
+       box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);  
+	}
+	.mask,.menu {
+		display: none;
+	}
+	.shelf {
+		width: 70%;
+		margin: 10px auto;
+	}
+	</style>
+</head>
+<body>
+	<label>
+		请为下面的DIV设置样式：<input type="button" name="选择" id="control">
+	</label>
+	<div class="block" id="object"></div>
+    <div class="mask" id="menu1"></div>
+    <div class="menu" id="menu2">
+    	<div class="shelf">
+    		请选择背景：<button class="btn1" id="btn1">红</button><button class="btn2" id="btn2">黄</button><button class="btn3" id="btn3">蓝</button>
+    	</div>   
+        <div class="shelf">
+    		请选择宽(px):<button id="btn4">200</button><button id="btn5">300</button><button id="btn6">400</button>
+    	 </div>
+    	 <div class="shelf">   
+    		请选择高(px):<button id="btn7">200</button><button id="btn8">300</button><button id="btn9">400</button>
+    	 </div>   
+    	<div class="dan">
+    		<button class="btn4" id="reinstate">恢复</button><button class="btn5" id="determine">确定</button><button id="btn10">duang~</button>
+    	</div>
+    </div>
+    <script type="text/javascript">
+    	//点击出现遮罩层效果
+    	document.getElementById('control').onclick = show;
+    	function show() {
+            document.getElementById('menu1').style.display = 'block';
+            document.getElementById('menu2').style.display = 'block';
+    	}
+        //确定按钮返回
+        document.getElementById('determine').onclick = close;
+        function close() {
+        	document.getElementById('menu1').style.display = 'none';
+        	document.getElementById('menu2').style.display = 'none';
+        }
+        //恢复原样
+        document.getElementById('reinstate').onclick = reinstate;
+        function reinstate() {
+        	document.getElementById('object').style = '';
+        }
+        //红色 
+        document.getElementById('btn1').onclick = red;
+        function red() {
+        	document.getElementById('object').style.backgroundColor = 'red';
+        }
+        //黄色
+        document.getElementById('btn2').onclick = yellow;
+        function yellow() {
+        	document.getElementById('object').style.backgroundColor = 'yellow';
+        }
+        // 蓝色
+        document.getElementById('btn3').onclick = blue ;
+        function blue() {
+        	document.getElementById('object').style.backgroundColor = 'blue';
+        }
+        // 宽度200
+        document.getElementById('btn4').onclick = ab;
+        function ab() {
+        	document.getElementById('object').style.width = "200px";
+        }
+        document.getElementById('btn5').onclick = abc;
+        function abc() {
+        	document.getElementById('object').style.width = "300px";
+        }
+        document.getElementById('btn6').onclick = abcd;
+        function abcd() {
+        	document.getElementById('object').style.width = "400px";
+        }
+        document.getElementById('btn7').onclick = abcde;
+        function abcde() {
+        	document.getElementById('object').style.height = "200px";
+        }  
+        document.getElementById('btn8').onclick = abcdef;
+        function abcdef() {
+        	document.getElementById('object').style.height = "300px";
+        } 
+        document.getElementById('btn9').onclick = abcdefg;
+        function abcdefg() {
+        	document.getElementById('object').style.height = "400px";
+        }
+        document.getElementById('btn10').onclick = CCd;
+        function CCd() {
+        	document.getElementById('object').style.transform = "rotate("+360+"deg)";
+        }                                    
+    </script> 
+</body>
+</html>
