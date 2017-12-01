@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>two-1</title>
+	<style type="text/css">
+		.one {
+			width: 400px;
+			height: 600px;
+			border: 4px solid gray;
+			position: absolute;
+			left: 5%;
+			top: 20%;
+		}
+		#information {
+			width: 100%;
+			height: 70%;
+			background: #f1f1f1;
+			overflow:auto;
+		}
+		#qiehuan {
+			width: 40px;
+			height: 40px;
+			border: 1px solid blue;
+		}
+		#text1 {
+			height: 40px;
+		}
+		.right {
+			float: right;
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<div class="one">
+		<div id="information"></div>
+		<img src="003.jpg" id="qiehuan">
+		<input type="text" name="提交框" id="text1">
+		<input type="button" name="确定" id="btn1" value="提交">
+	</div>
+<script type="text/javascript">
+	var oText  = document.getElementById('text1');
+	var oBtn = document.getElementById('btn1');
+	var oDiv = document.getElementById('information');
+	var oImg = document.getElementById('qiehuan');
+	// 提交文字值
+     oBtn.onclick = function() {         
+     	 if(onOFF && oText.value != '') {
+     		oDiv.innerHTML += '<img src="003.jpg">' + oText.value + '<br>';
+     		oText.value= '';
+     	}
+     	else if(oText.value != '') {
+     		oDiv.innerHTML += '<p class="right"> <img src="002.png" class="right">' + oText.value + '</p>';
+     		oText.value= '';
+     	}
+     }
+     //图片切换
+	var onOFF = true;
+	oImg.onclick = function() {
+      if(onOFF){
+      	oImg.src = '002.png';
+      	onOFF = false;
+      } else {
+      	oImg.src = '003.jpg';
+         onOFF = true;
+      }
+	}
+	
+</script>
+</body>
+</html>
