@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>eight</title>
+	<style type="text/css">
+		#bigcurtain {
+            width: 600px;
+            height: 400px;
+            position: absolute;
+            top: 10%;
+            left: 20%;
+            border: 2px;
+            box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.9);
+		}
+		#bigcurtain img {
+			width: 600px;
+			height: 400px;			
+		}
+		#smallcurtain {
+			width: 400px;
+			height: 300px;
+			position: absolute;
+			top: 20%;
+			right: 15%;
+			border: 1px;
+			box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.9);
+		}
+		#smallcurtain img {
+			width: 400px;
+			height: 300px;
+		}
+		#btn1,#btn2 {
+			width: 100px;
+			height: 20px;
+			position: absolute;
+		}
+		#btn1 {
+			left: 30%;
+			top: 5%;
+		}
+		#btn2 {
+			left: 36%;
+			top: 5%;
+		}
+		p {
+			position: absolute;
+			bottom: 0;
+			margin: 0;
+			padding: 0;
+			left: 45%;
+		}
+		span {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+<div id="bigcurtain"><img src="http://zero1five.gitee.io/lazyman/tuku/106.jpg"><p>1/4</p></div>
+<div id="smallcurtain"><img src="http://zero1five.gitee.io/lazyman/tuku/104.jpg"><p>1/3</p></div>
+<button id="btn1">上一组</button>
+<button id="btn2">下一组</button>
+<script type="text/javascript">
+	var omubu = document.getElementById('bigcurtain');
+	var oP1 = omubu.getElementsByTagName('p')[0];
+	var oImg1 = omubu.getElementsByTagName('img')[0];
+
+	var omubu2 = document.getElementById('smallcurtain');
+	var oP2 = omubu2.getElementsByTagName('p')[0];
+	var oImg2 = omubu2.getElementsByTagName('img')[0];
+	var arrSrc1 = ['http://zero1five.gitee.io/lazyman/tuku/106.jpg',
+	               'http://zero1five.gitee.io/lazyman/tuku/105.jpg',
+	               'http://zero1five.gitee.io/lazyman/tuku/104.jpg',
+	               'http://zero1five.gitee.io/lazyman/tuku/103.jpg',
+	               'http://zero1five.gitee.io/lazyman/tuku/102.png'];
+
+	var arrSrc2 = ['http://zero1five.gitee.io/lazyman/tuku/xx.jpg',
+	               'http://zero1five.gitee.io/lazyman/tuku/CC.jpg',
+	               'http://zero1five.gitee.io/lazyman/tuku/101.jpg'];
+	var num = 0;
+	var nam = 0;
+	var btn1 = document.getElementById('btn1');
+	var btn2 =document.getElementById('btn2');
+
+	//初始化
+
+    oImg1.src = arrSrc1[num];
+    oP1.innerHTML = 1 + num + '/' + arrSrc1.length;
+    oImg2.src = arrSrc2[num];
+    oP2.innerHTML = 1 + num + '/' + arrSrc2.length; 
+
+
+    //俩组函数
+    function big(){
+   	if(num < arrSrc1.length-1){
+   	    num ++;
+   	    oImg1.src = arrSrc1[num];
+   	    oP1.innerHTML = 1 + num + '/' + arrSrc1.length;
+    }else {
+    	num = 0;
+    	oImg1.src = arrSrc1[num];
+    	oP1.innerHTML = 1 + num + '/' + arrSrc1.length;
+    }    	
+    }
+
+    function small(){
+   	if(nam < arrSrc2.length-1){
+   	    nam ++;
+   	    oImg2.src = arrSrc2[nam];
+   	    oP2.innerHTML = 1 + nam + '/' + arrSrc2.length;
+    }else {
+    	nam = 0;
+    	oImg2.src = arrSrc2[nam];
+    	oP2.innerHTML = 1 + nam + '/' + arrSrc2.length;
+    }    	
+    }  
+   // 大图切换效果
+   oImg1.onclick = big;
+
+   //小图切换效果
+   oImg2.onclick = small;
+   //上一组函数
+   function font1(){
+   	if (num>0){
+   		num --;
+   	    oImg1.src = arrSrc1[num];
+   	    oP1.innerHTML = 1 + num + '/' + arrSrc1.length;   		
+   	}else{
+   		num = arrSrc1.length-1;
+   		oImg1.src = arrSrc1[num];
+   	    oP1.innerHTML = 1 + num + '/' + arrSrc1.length;
+   	}
+   }
+   function font2(){
+   	if (nam>0){
+   		nam --;
+   	    oImg2.src = arrSrc2[nam];
+   	    oP2.innerHTML = 1 + nam + '/' + arrSrc2.length;   		
+   	}else{
+   		nam = arrSrc2.length-1;
+   		oImg2.src = arrSrc2[nam];
+   	    oP2.innerHTML = 1 + nam + '/' + arrSrc2.length;
+   	}
+   }
+   //上一组
+   btn1.onclick = function(){
+   	font1();
+   	font2();
+   }
+   //下一组
+   btn2.onclick = function(){
+     big();
+     small();
+   }
+   
+
+
+</script>
+</body>
+</html>
