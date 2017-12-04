@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>seven</title>
+<style type="text/css">
+    body,div,p, {
+    	padding: 0;
+    	margin: 0;
+    }
+    a {
+    	text-decoration: none;
+    }
+	.curtain {
+		width: 700px;
+		height: 500px;
+		margin: 100px auto;
+		box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
+		border: 1px solid #f391a9;
+		position: relative;
+	}
+	img {
+		width: 700px;
+		height: 500px;
+	}
+    .growp {
+    	width: 120px;
+    	height: 20px;
+    	position: absolute;
+    	left: 50%;
+    	bottom: -10%;
+    	transform: translateX(-50%);
+    	display: flex;
+    	justify-content: center;
+    }
+    #growp div {
+    	height: 20px;
+    	width: 20px;
+    	border: 1px solid #faa755;
+    	border-radius: 50%;
+    	margin: 0 auto;
+        position: relative;
+    }
+    #growp div img {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: -40px;
+        top: -105px;
+        border: 5px solid block;
+        box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.7);
+        display: none;
+    }
+    #growp div:hover img {
+        display: block;;
+    }
+    #right {
+    	width: 30px;
+    	height: 30px;
+    	position: absolute;
+    	top: 50%;
+    	right: 6%;
+    	transform: translateY(-50%);
+    	background: #faa755;
+    	text-align: center;
+    	line-height: 30px;
+    	color: white;
+    	border-radius: 50%;
+    	opacity: 0.7;
+    }
+    #left {
+    	width: 30px;
+    	height: 30px;
+    	position: absolute;
+    	top: 50%;
+    	left: 6%;
+    	transform: translateY(-50%);
+    	background: #faa755;
+    	text-align: center;
+    	line-height: 30px;
+    	color: white;
+    	border-radius: 50%;
+    	opacity: 0.7;
+    }
+    .active {
+    	background: #faa755;
+    }
+</style>
+</head>
+<body>
+<div class="curtain" id="curtain">
+	<img id="img1">
+	<a href="#" id="left"><</a>
+	<a href="#" id="right">></a>
+	<div class="growp" id="growp">
+	</div>
+</div>
+<script type="text/javascript">
+window.onload = function(){	
+	var img = ['http://zero1five.gitee.io/lazyman/tuku/106.jpg',
+	           'http://zero1five.gitee.io/lazyman/tuku/105.jpg',
+	           'http://zero1five.gitee.io/lazyman/tuku/104.jpg',
+	           'http://zero1five.gitee.io/lazyman/tuku/103.jpg'];
+	var num = 0;
+	var img1 = document.getElementById('img1');
+    var right = document.getElementById('right');
+    var left = document.getElementById('left');
+    // 这里找到了四个div
+    var growp = document.getElementById('growp');
+    var click = growp.getElementsByTagName('div');
+    var photo = growp.getElementsByTagName('img');
+
+    //初始化
+    img1.src = img[num];
+    for( var i =0; i<img.length; i++) {
+    	growp.innerHTML += '<div></div>';     
+    }
+    click[num].className = 'active'; //第一步把第一张图片扔给img的src， 第二步添加4个div加一个img套子，第三步点击效果。
+ 
+   // 底部点击效果 
+    for(var i=0; i<click.length; i++){
+    	click[i].index = i;  
+    	click[i].onclick = function(){
+    		img1.src = img[this.index];
+
+    		for(var i=0; i<img.length; i++){
+    			click[i].className = '';
+    			this.className = 'active';
+    		}
+    	}
+    }  
+
+    //左右切换效果
+    var photo = function(){
+        img1.src = img[num];
+        for(var i=0; i<img.length; i++){
+    		click[i].className = '';
+    	}  
+    	click[num].className = 'active';      
+        
+    }; //函数功能
+    right.onclick = function() {
+    	num ++;
+       if(num == 4 ){
+       	num = 0;
+       }
+       photo();
+    };
+    left.onclick = function() {
+    	if (num == 0) {
+    		num = 4;
+    	}
+    	num --;
+    	photo();
+    }
+}
+</script>
+</body>
+</html>
