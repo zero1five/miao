@@ -42,17 +42,16 @@
         position: relative;
     }
     #growp div img {
-        width: 100px;
+        width: 150px;
         height: 100px;
         position: absolute;
-        left: -40px;
+        left: -60px;
         top: -105px;
-        border: 5px solid block;
-        box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.9);
         display: none;
     }
     #growp div:hover img {
-        display: block;;
+        display: block;
     }
     #right {
     	width: 30px;
@@ -112,10 +111,11 @@ window.onload = function(){
 
     //初始化
     img1.src = img[num];
+
     for( var i =0; i<img.length; i++) {
-    	growp.innerHTML += '<div></div>';     
+    	growp.innerHTML += '<div><img></div>'; 
     }
-    click[num].className = 'active'; //第一步把第一张图片扔给img的src， 第二步添加4个div加一个img套子，第三步点击效果。
+    click[num].className = 'active'; //第一步把第一张图片扔给img的src， 第二步添加4个div，第三步点击效果。
  
    // 底部点击效果 
     for(var i=0; i<click.length; i++){
@@ -129,16 +129,20 @@ window.onload = function(){
     		}
     	}
     }  
+    for(var i=0; i<img.length; i++) {
+        photo[0].src = 'http://zero1five.gitee.io/lazyman/tuku/106.jpg';
+        photo[1].src = 'http://zero1five.gitee.io/lazyman/tuku/105.jpg';
+        photo[2].src = 'http://zero1five.gitee.io/lazyman/tuku/104.jpg';
+        photo[3].src = 'http://zero1five.gitee.io/lazyman/tuku/103.jpg';
+    }
 
-    //左右切换效果
     var photo = function(){
         img1.src = img[num];
         for(var i=0; i<img.length; i++){
     		click[i].className = '';
     	}  
-    	click[num].className = 'active';      
-        
-    }; //函数功能
+    	click[num].className = 'active';              
+    }; 
     right.onclick = function() {
     	num ++;
        if(num == 4 ){
